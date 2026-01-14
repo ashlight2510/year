@@ -287,7 +287,7 @@
             <span id="phaseChip" class="chip rounded-full px-3 py-1.5 text-sm"
               >준비</span
             >
-            <span id="qCount" class="soft text-sm">총 30문항</span>
+            <span id="qCount" class="soft text-sm" data-i18n="qCountDefault">총 30문항</span>
           </div>
           <div class="flex items-center gap-2">
             <button
@@ -321,13 +321,13 @@
         <!-- Start screen -->
         <div id="startScreen" class="mt-6 fadeIn">
           <div class="rounded-3xl p-5 sm:p-6 bg-white/5 border border-white/10">
-            <h2 class="text-xl sm:text-2xl font-bold">
+            <h2 class="text-xl sm:text-2xl font-bold" data-i18n="startScreenTitle">
               진짜로 3분 안에 끝나는 방식
             </h2>
-            <ul class="mt-3 soft leading-relaxed space-y-1.5">
+            <ul class="mt-3 soft leading-relaxed space-y-1.5" data-i18n-html="startScreenList">
               <li>• 질문은 1개씩, 버튼 누르면 바로 다음으로 넘어갑니다.</li>
               <li>• 정답 없음. 느낌대로 찍어도 결과가 잘 나옵니다.</li>
-              <li>• 결과는 “보고서”로 나와서 공유하기 좋습니다.</li>
+              <li>• 결과는 "보고서"로 나와서 공유하기 좋습니다.</li>
             </ul>
             <div class="mt-5 flex flex-col sm:flex-row gap-2">
               <button
@@ -345,7 +345,7 @@
                 15문항 빠른 모드 ⚡
               </button>
             </div>
-            <p class="mt-3 text-xs soft">
+            <p class="mt-3 text-xs soft" data-i18n="fastModeNote">
               * 빠른 모드는 각 영역(돈/시간/감정)에서 핵심 문항만 뽑아 더 빠르게
               분석합니다.
             </p>
@@ -365,7 +365,7 @@
                 class="chip rounded-full px-3 py-1.5 text-sm soft"
               ></span>
             </div>
-            <span class="text-xs soft">클릭하면 바로 다음</span>
+            <span class="text-xs soft" data-i18n="clickNext">클릭하면 바로 다음</span>
           </div>
 
           <h3
@@ -409,18 +409,18 @@
                 <p id="resultSubtitle" class="mt-2 soft leading-relaxed"></p>
               </div>
               <div class="chip rounded-3xl px-4 py-3 w-full sm:w-auto">
-                <div class="text-xs soft">내 3대 소비</div>
+                <div class="text-xs soft" data-i18n="top3Spending">내 3대 소비</div>
                 <div class="mt-1 space-y-1">
                   <div class="flex items-center justify-between gap-2">
-                    <span class="soft">💰 돈</span
+                    <span class="soft" data-i18n="moneyLabel">💰 돈</span
                     ><span id="sumMoney" class="mono font-semibold"></span>
                   </div>
                   <div class="flex items-center justify-between gap-2">
-                    <span class="soft">⏳ 시간</span
+                    <span class="soft" data-i18n="timeLabel">⏳ 시간</span
                     ><span id="sumTime" class="mono font-semibold"></span>
                   </div>
                   <div class="flex items-center justify-between gap-2">
-                    <span class="soft">🧠 감정</span
+                    <span class="soft" data-i18n="emotionLabel">🧠 감정</span
                     ><span id="sumEmotion" class="mono font-semibold"></span>
                   </div>
                 </div>
@@ -429,17 +429,17 @@
 
             <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div class="chip rounded-3xl p-4">
-                <div class="text-sm font-bold">🔥 해석</div>
+                <div class="text-sm font-bold" data-i18n="resultInsightLabel">🔥 해석</div>
                 <p id="resultInsight" class="mt-2 soft leading-relaxed"></p>
               </div>
               <div class="chip rounded-3xl p-4">
-                <div class="text-sm font-bold">🧩 내년 한 줄 처방</div>
+                <div class="text-sm font-bold" data-i18n="resultRxLabel">🧩 내년 한 줄 처방</div>
                 <p id="resultRx" class="mt-2 soft leading-relaxed"></p>
               </div>
             </div>
 
             <div class="mt-4 chip rounded-3xl p-4">
-              <div class="text-sm font-bold">🍀 행운 멘트</div>
+              <div class="text-sm font-bold" data-i18n="resultLuckLabel">🍀 행운 멘트</div>
               <p id="resultLuck" class="mt-2 soft leading-relaxed"></p>
             </div>
 
@@ -447,18 +447,21 @@
               <button
                 id="copyBtn"
                 class="w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold bg-emerald-500/90 hover:bg-emerald-500 transition"
+                data-i18n="copyBtn"
               >
                 결과 링크 복사 🔗
               </button>
               <button
                 id="shareBtn"
                 class="w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold btn"
+                data-i18n="shareBtn"
               >
                 공유하기 📣
               </button>
               <button
                 id="againBtn"
                 class="w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold btn"
+                data-i18n="againBtn"
               >
                 한 번 더 🎲
               </button>
@@ -475,9 +478,9 @@
               class="flex flex-col sm:flex-row items-start justify-between gap-4"
             >
               <div>
-                <p class="soft text-sm">다른 재밌는 것도 있는데</p>
-                <p class="text-lg font-bold mt-1">더 많은 테스트 해보기</p>
-                <p class="soft text-sm mt-1">
+                <p class="soft text-sm" data-i18n="moreTestsDesc1">다른 재밌는 것도 있는데</p>
+                <p class="text-lg font-bold mt-1" data-i18n="moreTestsTitle">더 많은 테스트 해보기</p>
+                <p class="soft text-sm mt-1" data-i18n="moreTestsDesc2">
                   가볍게 하다 보면 의외로 통찰이 하나씩 생깁니다.
                 </p>
               </div>
@@ -486,6 +489,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white rounded-lg font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 w-full sm:w-auto text-center"
+                data-i18n="moreTestsLink"
               >
                 더 보러가기 →
               </a>
@@ -494,7 +498,7 @@
         </div>
       </section>
 
-      <footer class="mt-7 text-center text-xs soft">
+      <footer class="mt-7 text-center text-xs soft" data-i18n="footer">
         © AshLight / FunnyFunny · 결과는 재미+자기점검용입니다.
       </footer>
     </main>
@@ -1246,8 +1250,8 @@
       }
 
       function showStart() {
-        els.phaseChip.textContent = "준비";
-        els.qCount.textContent = "총 30문항 (빠른 모드 15문항 가능)";
+        els.phaseChip.textContent = t("phaseReady");
+        els.qCount.textContent = t("qCountFull");
         els.startScreen.classList.remove("hidden");
         els.questionScreen.classList.add("hidden");
         els.resultScreen.classList.add("hidden");
@@ -1259,7 +1263,7 @@
         resetState();
         questions = buildQuestions(selectedMode);
         els.qCount.textContent =
-          selectedMode === "fast" ? "빠른 모드 · 15문항" : "풀 모드 · 30문항";
+          selectedMode === "fast" ? t("qCountFast") : t("qCountFullMode");
         els.startScreen.classList.add("hidden");
         els.resultScreen.classList.add("hidden");
         els.questionScreen.classList.remove("hidden");
@@ -1272,7 +1276,7 @@
         const pct = total ? Math.round((idx / total) * 100) : 0;
         els.progressFill.style.width = `${pct}%`;
         els.progressText.textContent = `${pct}%`;
-        els.stepText.textContent = `STEP ${Math.min(idx, total)}/${total}`;
+        els.stepText.textContent = t("stepText", { current: Math.min(idx, total), total });
       }
 
       function renderQuestion() {
@@ -1281,15 +1285,15 @@
           return showResult();
         }
 
-        els.phaseChip.textContent = "진행 중";
+        els.phaseChip.textContent = t("phaseInProgress");
         els.pillDim.textContent = DIM_LABEL[q.dim] || q.dim;
         els.pillTag.textContent = q.tag ? `# ${q.tag}` : "";
         els.qText.textContent = q.text;
 
         els.hintText.textContent =
           mode === "fast"
-            ? "빠른 모드: 핵심만 뽑아 분석 중"
-            : "풀 모드: 더 정확하게 패턴 분류 중";
+            ? t("hintFastMode")
+            : t("hintFullMode");
 
         els.options.innerHTML = "";
         q.options.forEach((opt, optIdx) => {
@@ -1299,7 +1303,7 @@
           btn.innerHTML = `
       <div class="flex items-start justify-between gap-3">
         <div class="font-semibold">${escapeHtml(opt.label)}</div>
-        <div class="soft text-xs">선택</div>
+        <div class="soft text-xs">${t("optionSelect")}</div>
       </div>
     `;
           btn.addEventListener("click", () => chooseOption(optIdx));
@@ -1376,7 +1380,7 @@
       }
 
       function showResult() {
-        els.phaseChip.textContent = "결과";
+        els.phaseChip.textContent = t("phaseResult");
         els.questionScreen.classList.add("hidden");
         els.resultScreen.classList.remove("hidden");
 
@@ -1411,7 +1415,7 @@
         const url = window.location.href;
         try {
           await navigator.clipboard.writeText(url);
-          toast("복사 완료! 친구한테 던져요 📣", true);
+          toast(t("msgCopySuccess"), true);
         } catch (e) {
           // fallback
           const ta = document.createElement("textarea");
@@ -1420,19 +1424,19 @@
           ta.select();
           document.execCommand("copy");
           document.body.removeChild(ta);
-          toast("복사 완료! (fallback)", true);
+          toast(t("msgCopySuccess"), true);
         }
       }
 
       async function share() {
-        const title = "올해 나의 인생 소비 보고서";
-        const text = `${title}\n내 돈·시간·감정이 어디로 갔는지 한 번에 정리됨 😄\n\n`;
+        const title = t("shareTitle");
+        const text = `${title}\n${t("shareText")}\n\n`;
         const url = window.location.href;
 
         if (navigator.share) {
           try {
             await navigator.share({ title, text, url });
-            toast("공유 성공! 🔥", true);
+            toast(t("msgShareSuccess"), true);
             return;
           } catch (e) {}
         }
@@ -1461,7 +1465,7 @@
         els.questionScreen.classList.add("hidden");
         els.resultScreen.classList.remove("hidden");
         els.skipBtn.classList.add("hidden");
-        els.phaseChip.textContent = "공유 결과";
+        els.phaseChip.textContent = t("phaseShared");
 
         // 요약 레이블은 key 파싱
         const [mKey, tKey, eKey] = r.split("|");
@@ -1479,7 +1483,7 @@
         const total = 15;
         els.progressFill.style.width = "100%";
         els.progressText.textContent = "100%";
-        els.stepText.textContent = `STEP ${total}/${total}`;
+        els.stepText.textContent = t("stepText", { current: total, total });
 
         return true;
       }
@@ -1521,6 +1525,41 @@
           skipBtn: "이 질문 패스",
           backBtn: "← 이전",
           otherServices: "다른 서비스 보기",
+          startScreenTitle: "진짜로 3분 안에 끝나는 방식",
+          startScreenList: "• 질문은 1개씩, 버튼 누르면 바로 다음으로 넘어갑니다.<br>• 정답 없음. 느낌대로 찍어도 결과가 잘 나옵니다.<br>• 결과는 \"보고서\"로 나와서 공유하기 좋습니다.",
+          fastModeNote: "* 빠른 모드는 각 영역(돈/시간/감정)에서 핵심 문항만 뽑아 더 빠르게 분석합니다.",
+          clickNext: "클릭하면 바로 다음",
+          top3Spending: "내 3대 소비",
+          moneyLabel: "💰 돈",
+          timeLabel: "⏳ 시간",
+          emotionLabel: "🧠 감정",
+          resultInsightLabel: "🔥 해석",
+          resultRxLabel: "🧩 내년 한 줄 처방",
+          resultLuckLabel: "🍀 행운 멘트",
+          copyBtn: "결과 링크 복사 🔗",
+          shareBtn: "공유하기 📣",
+          againBtn: "한 번 더 🎲",
+          moreTestsDesc1: "다른 재밌는 것도 있는데",
+          moreTestsTitle: "더 많은 테스트 해보기",
+          moreTestsDesc2: "가볍게 하다 보면 의외로 통찰이 하나씩 생깁니다.",
+          moreTestsLink: "더 보러가기 →",
+          footer: "© AshLight / FunnyFunny · 결과는 재미+자기점검용입니다.",
+          qCountDefault: "총 30문항",
+          phaseReady: "준비",
+          phaseInProgress: "진행 중",
+          phaseResult: "결과",
+          phaseShared: "공유 결과",
+          qCountFull: "총 30문항 (빠른 모드 15문항 가능)",
+          qCountFast: "빠른 모드 · 15문항",
+          qCountFullMode: "풀 모드 · 30문항",
+          hintFastMode: "빠른 모드: 핵심만 뽑아 분석 중",
+          hintFullMode: "풀 모드: 더 정확하게 패턴 분류 중",
+          optionSelect: "선택",
+          stepText: "STEP {current}/{total}",
+          shareTitle: "올해 나의 인생 소비 보고서",
+          shareText: "내 돈·시간·감정이 어디로 갔는지 한 번에 정리됨 😄",
+          msgCopySuccess: "복사 완료! 친구한테 던져요 📣",
+          msgShareSuccess: "공유 성공! 🔥",
         },
         en: {
           title: "My Life Spending Report <span class=\"text-violet-300\">This Year</span>",
@@ -1531,6 +1570,41 @@
           skipBtn: "Skip this question",
           backBtn: "← Previous",
           otherServices: "View other services",
+          startScreenTitle: "Really finishes in 3 minutes",
+          startScreenList: "• One question at a time, click to move to the next.<br>• No right answers. Feel free to choose, results will be good.<br>• Results come as a \"report\" that's easy to share.",
+          fastModeNote: "* Fast mode picks only key questions from each area (money/time/emotion) for faster analysis.",
+          clickNext: "Click to proceed",
+          top3Spending: "My Top 3 Spending",
+          moneyLabel: "💰 Money",
+          timeLabel: "⏳ Time",
+          emotionLabel: "🧠 Emotion",
+          resultInsightLabel: "🔥 Insight",
+          resultRxLabel: "🧩 One-line prescription for next year",
+          resultLuckLabel: "🍀 Luck message",
+          copyBtn: "Copy result link 🔗",
+          shareBtn: "Share 📣",
+          againBtn: "Try again 🎲",
+          moreTestsDesc1: "There are other fun things too",
+          moreTestsTitle: "Try more tests",
+          moreTestsDesc2: "When you do them lightly, insights emerge one by one.",
+          moreTestsLink: "See more →",
+          footer: "© AshLight / FunnyFunny · Results are for fun and self-reflection.",
+          qCountDefault: "Total 30 questions",
+          phaseReady: "Ready",
+          phaseInProgress: "In Progress",
+          phaseResult: "Result",
+          phaseShared: "Shared Result",
+          qCountFull: "Total 30 questions (15 questions in fast mode)",
+          qCountFast: "Fast mode · 15 questions",
+          qCountFullMode: "Full mode · 30 questions",
+          hintFastMode: "Fast mode: Analyzing key points only",
+          hintFullMode: "Full mode: More accurately classifying patterns",
+          optionSelect: "Select",
+          stepText: "STEP {current}/{total}",
+          shareTitle: "My Life Spending Report This Year",
+          shareText: "See where my money·time·emotions went, all organized in one place 😄",
+          msgCopySuccess: "Copied! Share with friends 📣",
+          msgShareSuccess: "Share successful! 🔥",
         },
       };
 
