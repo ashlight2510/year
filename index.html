@@ -273,6 +273,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white rounded-lg font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200"
+            data-i18n="otherServices"
             >다른 서비스 보기</a
           >
         </div>
@@ -292,12 +293,14 @@
             <button
               id="resetBtn"
               class="btn rounded-full px-3 py-1.5 text-sm soft hover:text-white transition"
+              data-i18n="resetBtn"
             >
               처음으로
             </button>
             <button
               id="skipBtn"
               class="btn rounded-full px-3 py-1.5 text-sm soft hover:text-white transition hidden"
+              data-i18n="skipBtn"
             >
               이 질문 패스
             </button>
@@ -376,6 +379,7 @@
             <button
               id="backBtn"
               class="btn rounded-2xl px-4 py-2 soft hover:text-white transition"
+              data-i18n="backBtn"
             >
               ← 이전
             </button>
@@ -1506,8 +1510,108 @@
       els.shareBtn.addEventListener("click", share);
       els.againBtn.addEventListener("click", () => start(mode));
 
+      // ---------- i18n ----------
+      const translations = {
+        ko: {
+          title: "올해 나의 <span class=\"text-violet-300\">인생 소비</span> 보고서",
+          subtitle: "올해 내 <b>돈·시간·감정</b>이 어디로 흘렀는지, <b>재미있게</b> 그리고 <b>쉽게</b> 정리해드립니다.",
+          startBtn: "시작하기 🚀",
+          fastBtn: "15문항 빠른 모드 ⚡",
+          resetBtn: "처음으로",
+          skipBtn: "이 질문 패스",
+          backBtn: "← 이전",
+          otherServices: "다른 서비스 보기",
+        },
+        en: {
+          title: "My Life Spending Report <span class=\"text-violet-300\">This Year</span>",
+          subtitle: "Where did my <b>money·time·emotions</b> flow this year? We'll organize it <b>fun</b> and <b>easy</b>.",
+          startBtn: "Start 🚀",
+          fastBtn: "15 questions fast mode ⚡",
+          resetBtn: "Reset",
+          skipBtn: "Skip this question",
+          backBtn: "← Previous",
+          otherServices: "View other services",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") {
+          return template;
+        }
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+
+      function applyTranslations() {
+        document.title = currentLang === "ko" ? "올해 나의 인생 소비 보고서" : "My Life Spending Report This Year";
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.dataset.i18n;
+          const translated = t(key);
+          if (translated.includes("<span")) {
+            el.innerHTML = translated;
+          } else {
+            el.textContent = translated;
+          }
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const intlLocale =
+          typeof Intl === "object" && typeof Intl.DateTimeFormat === "function"
+            ? Intl.DateTimeFormat().resolvedOptions().locale
+            : "";
+        const sources = [
+          ...(navigator.languages || []),
+          navigator.language,
+          navigator.userLanguage,
+          intlLocale,
+        ]
+          .filter(Boolean)
+          .map((locale) => locale.toLowerCase());
+        const hasKorean = sources.some((locale) => locale.startsWith("ko"));
+        return hasKorean ? "ko" : "en";
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
       /** Init */
       (function init() {
+        setLang(detectLang(), { updateUrl: false });
         if (!tryLoadSharedResult()) {
           showStart();
         }
