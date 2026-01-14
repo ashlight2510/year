@@ -1650,6 +1650,12 @@
         const found = RESULT_TYPES.find((x) => x.key === r);
         if (!found) return false;
 
+        // URL의 lang 파라미터 확인 및 언어 설정
+        const urlLang = sp.get("lang");
+        if (urlLang && supportedLangs.includes(urlLang)) {
+          setLang(urlLang, { updateUrl: false });
+        }
+
         // 공유 링크로 들어오면 결과 화면 바로
         resetState();
         questions = buildQuestions("fast"); // 굳이 풀로 안 돌림
